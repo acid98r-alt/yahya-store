@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ ستايل كوين ✨ | أزياء عصرية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #9c27b0;
+            --secondary: #7b1fa2;
+            --accent: #e1bee7;
+            --dark: #1a1a2e;
+            --light: #f8f8ff;
+            --gold: #ffd700;
+            --pink: #e91e63;
+            --success: #4caf50;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* النجوم المتلألئة */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(156, 39, 176, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            color: white;
+            background: linear-gradient(45deg, var(--gold), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--gold);
+            animation: crownGlow 2s infinite alternate;
+        }
+
+        @keyframes crownGlow {
+            from { filter: drop-shadow(0 0 5px gold); }
+            to { filter: drop-shadow(0 0 15px gold); }
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(123, 31, 162, 0.8));
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 0 15px rgba(156, 39, 176, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: var(--accent);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--pink));
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(156, 39, 176, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.7);
+        }
+
+        /* Products Section */
+        .products-section {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .products-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--accent);
+            position: relative;
+            text-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, #2d2d44, #232338);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(156, 39, 176, 0.4);
+            border-color: rgba(156, 39, 176, 0.6);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(45deg, var(--dark), #2a2a3e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-image .placeholder {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .order-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transform: scale(1.03);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background: linear-gradient(145deg, #2d2d44, #232338);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+
+        .admin-panel h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #1a1a2e;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .image-upload {
+            border: 2px dashed #666;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-upload:hover {
+            border-color: var(--primary);
+        }
+
+        .image-upload i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .admin-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .add-btn {
+            background: linear-gradient(45deg, var(--success), #2e7d32);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .clear-btn {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* Order Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #2d2d44, #232338);
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .submit-order {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .location {
+            font-size: 1.1rem;
+            margin-top: 15px;
+            color: var(--accent);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+<style type="text/css" id="dcoder_stylesheet">اريد لعبة مصغرة تشبه لعبة march ofepmers علي قم بجعل الواجهة وزيينها مثل الحروب
+قم بتقسيم لكي تنظم كل قاعدة على حدة
+1ـ البناء والتطويير
+اجعل خانة القلعة 🏰 في صف واحد اجعلها جميلة لأنها هيا الأساس وتحتاج الموارد لتقوم بتطويرها خصوصا الحديد والحجر
+مبنى الجدار 🏛 عند النقر على الجدار افتح تبويب لتدريب الدفاعات لتحمي قلعتك سعة انتاج الدفاعات حسب مستوى وعند الترقية يحتاج الوقت 
+مثال جدار مستوى 1 = سعة دفاعات 100 وترتفع حسب كل مستوى
+2- المزارع الإنتاجية 
+لدينا منزل فضة 💎 صعبة جدا الإنتاج والجمع
+منجم حديد🔗 صعب الإنتاج والجمع
+مقلعة حجارة 🪨متوسط الإنتاج والجمع
+طاحونة خشب🪵 سهل الإنتاج والجمع
+مزرعة طعام🍖 سهل جدا الإنتاج والجمع
+مستوى كل مزرعة 1 سعة انتاجها 200 وترتفع على حسب المستوى التالي
+وسرعة الإنتاج ايضا تختلف على حسب كل مزرعة
+مثال طعام هو سهل جدا الإنتاج مستوى 1 تنتج 200 في 15 دقيقة
+خشب  مستوى 1 ينتج 170 في 15 دقيقة
+حجر مستوى 1 ينتج 150 في 15 دقيقة
+حديد مستوى 1 ينتج 120 في 15 دقيقة
+فضة مستوى 1 ينتج 80 في 15 دقيقة
+وتختلف السعة والإنتاج على حسب كل مستوى ويرتفع مع ارتفاع مستوى المزارع
+قم بوضع شريط الموارد دائم في صف واحد جميل اعلى الشاشة لتظهر كم لديك من موارد وتبين كم تنتج مزارعك
+عند النقر على المزارع قم بإظهار كم تنتج وماهي الموارد اللازمة لترقية المستوى 
+قم بوضع خانة الذهب 🪙 اسفل شريط الموارد في الأعلى من الجهة اليمنى وتستطيع لحصول عليه فقط من اكمال المهام او الحصول على الجوائز
+3- تدريب الجيش بواسطة مبنى الثكنات عند النقر على الثكنات قم بفتح تبويب خاص بالتدريب الجيش
+مستوى الثكنة 1 سعة التدريب الجيش 100 وترتفع حسب كل مستوى انواع 
+درب انواع مختلفة من الوحدات سيوف 🗡 يحتاج ورماة🏹 وفرسان🐎 ويحتاجون الموارد للتدريب مثال سيوف يحتاج الحديد ورماة يحتاج لخشب و فرسان يحتاج الطعام ودفاعات تحتاج الحجر التدريب يكون بالوقت 
+كل وحده لها نقاذ قوة وضعف ضد وحدات اخرى
+سيوف  قوي ضد فرسان ضعيف ضد رماة ودفاعات
+فرسان قوي ضد رماه ضعيف ضد سيوف ودفاعات
+رماة قوي ضد سيوف ودفاعات و ضعيف ضد فرسان
+رتب كم لديك من جنود عند التدريب وقوتهم
+وفصل كم لديك من سيوف و رماة و فرسان
+لتكون جميلة 
+4- مبنى البحث عند النقر على الأكادمية يفتح تبويب خاص بالبحث  تحتاج الفضة بكثرة لكي تقوم بلأبحاث
+الأكادمية تستخدم لتحسين الإقتصاد والقتال والقوة والدفاع
+في لإقتصاد لدينا سعة وسرعة الإنتاج لدى كل مزرعة
+القتال مثال
+قوة الجيش، قوة السيوف، قوة رماة، قوة الفرسان، قوة الدفاعات
+صحة الحيش،  صحة السيوف، صحة الرماة، صحة الفرسان، صحة الدفاعات
+ودفاع الجيش، دفاع السيوف، دفاع الرماة، دفاع الفرسان، دفاع الدفاعات
+ايضا ضع خبرة البطل لتزيد من خبرته
+قم بوضع ايقونة البطل اعلى الشاشة اسفل شريط الموارد في الوسط 
+البطل مستوى 1 تزداد خبرته مع كل ترقية او بحث جديد او بناء جديد او قتال او معركة 
+في المعارك تزداد خبرة البطل وبهذا يعزز من مستوى قوة ودفاع وصحة الجيش مع مع كل مستوى  
+5- هجوم العدو 
+هجمات عشوائية متكررة على قلعتك وقوتهم على حسب مستواك في القلعة
+عند الهجوم أظهر تنبيه باللون الأحمر،  وشريط أحمر يشعل وينطفى على حواف الشاشة يمين يسار فوق تحت بأن هجوم قادم نحو قلعتك لتكون على إستعداد أظهر ايقونة عدد الجيش وقوته وكم تبقى من الوقت للوصولهم
+عند الفوز عليهم ستحصل على مكافئة موارد وذهب حسب قوة العدو
+وإن خسرت في المعركة سيسرقون بعض موارد ويتسببون في أضرار داخل قلعتك من دفاعات وجيش
+أظهر كل ذلك بواسطة تقرير المعركة بالتفصيل يمكنك الإطاع عليه ضع ايقونة المعارك اسفل الشاشة من الجهة اليسرى 
+عند الخسارة أظهر جو مثل الحريق على قلعتك لكي تبدو أنها تحترق تستمر ل 20 ثانية وتختفي بعدها
+يمكنك وضع درع سلام ليحميك من الهجمات من العدو
+عند يكون هجوم قادم وتفعل درع السلام يختفي التنبيه وتصبح في أمان
+يمكنك شراء درع السلام بالذهب
+5 دقائق 50 ذهب
+15 دقيقة 200 ذهب
+30 دقيقة 500 ذهب
+ساعة 120 ذهب
+عند تفعيل الدرع 
+أظهر ايقونة صغيرة في وسط الشاشة على اليمين لتنبهك بالوقت 
+5- المغامرات ضع ثلاث مغامرات عشوائية وتفوز بالذهب عند اكمالها
+7- مهام يومية  عند اكمالها ستربح ذهب وستظهر كل ساعة 
+8-مبنى المشفى عند النقر على المشفى اظهر تبويب خاص بالشفاء  عند اصابة جنودك سينقصون من عدد الجنود
+وعند شفائهم سيرجعون الى العدد مباشرة
+الشفاء يكون بالوقت والموارد حسب كل فئة وماتحتاجه
+مشفى مستوى 1 سعته 500 جندي ويرتفع حسب كل مستوى
+ملاحظة 
+لكي تقوم بترقية القلعة الى للمستوى التالي
+على المباني التالية
+ثكنات وجدار ومشفى وأبحاث 
+و مزرعة طعام و طاحونة خشب و مقلعة حجارة و منجم حديد و منزل طعام ان يكونو بنفس مستوى القلعة تماما لكي تستطيع أن ترقي القلعة للمستوى التالي 
+اجعل كل ترقية او تطوير بالوقت وأظهر كم ستحتاج من موارد لذلك
+السماح بمنى واحد فقط قيد الإنشاء عند الإكتمال تستطيع إنشاء واحد تاني... الخ
+اظهر ايقونة على يسار وسط الشاشة على كل بناء او تدريب او انشاء او بحث او جمع او هجوم لكي تكون على علم
+ابقائها ولا تجعلها تحجب الشاشة
+قم بتجهيز هذا الكود كما طلبت منك تماما دون نقصان 
+قم بدمج جميع الكودات ووضعه في كود واحد فقد
+index.html</style></head>
+<body>
+    <!-- النجوم المتلألئة -->
+    <div class="stars" id="stars-container"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <h1>✨ ستايل كوين ✨</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-target="home">الرئيسية</a></li>
+                    <li><a href="#" class="nav-link" data-target="products">المنتجات</a></li>
+                    <li><a href="#" class="nav-link" data-target="tracking">تتبع الطلب</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>✨ أهلاً بك في ستايل كوين ✨</h2>
+            <p>اكتشف تشكيلتنا المميزة من الأزياء العصرية. جودة فائقة، تصميمات راقية، وتوصيل سريع إلى باب منزلك.</p>
+            <a href="#" class="cta-button" id="explore-products">استكشف المنتجات</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <h2 class="section-title">تشكيلتنا المميزة</h2>
+            <div class="products-grid" id="products-container">
+                <!-- المنتجات ستضاف هنا -->
+            </div>
+
+            <!-- لوحة التحكم -->
+            <div class="admin-panel">
+                <h3><i class="fas fa-cog"></i> لوحة إدارة المنتجات</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="product-name">اسم المنتج</label>
+                        <input type="text" id="product-name" placeholder="أدخل اسم المنتج">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">السعر (د.ج)</label>
+                        <input type="number" id="product-price" placeholder="أدخل السعر">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-description">وصف المنتج</label>
+                    <textarea id="product-description" placeholder="أدخل وصف المنتج"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>صورة المنتج (رابط URL)</label>
+                    <input type="text" id="product-image" placeholder="https://example.com/image.jpg">
+                    <small style="color: #ccc;">الصق رابط الصورة من الإنترنت</small>
+                </div>
+                
+                <div class="admin-buttons">
+                    <button class="add-btn" id="add-product">
+                        <i class="fas fa-plus"></i> إضافة منتج
+                    </button>
+                    <button class="clear-btn" id="clear-all">
+                        <i class="fas fa-trash"></i> حذف الكل
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Tracking Section -->
+    <section class="tracking-section" id="tracking">
+        <div class="container">
+            <h2 class="section-title">تتبع طلبك</h2>
+            <div class="tracking-form">
+                <div class="form-group">
+                    <label for="order-id">رقم الطلب</label>
+                    <input type="text" id="order-id" placeholder="أدخل رقم الطلب">
+                </div>
+                <button class="track-btn" id="track-order">تتبع الطلب</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fas fa-crown"></i>
+                <span>✨ ستايل كوين ✨</span>
+            </div>
+            <p>وجهتك الأولى للأزياء العصرية والأنيقة</p>
+            <div class="location">
+                ولاد ابراهيم_حمادي_بومرداس
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div class="modal" id="order-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>طلب المنتج</h3>
+                <button class="close-modal">×</button>
+            </div>
+            <form class="order-form" id="order-form">
+                <input type="hidden" id="ordered-product">
+                <input type="hidden" id="ordered-price">
+                <div class="form-group">
+                    <label for="customer-name">الاسم الكامل</label>
+                    <input type="text" id="customer-name" required placeholder="أدخل اسمك الكامل">
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">رقم الهاتف</label>
+                    <input type="tel" id="customer-phone" required placeholder="أدخل رقم هاتفك">
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">العنوان</label>
+                    <input type="text" id="customer-address" required placeholder="أدخل عنوانك بالتفصيل">
+                </div>
+                <div class="form-group">
+                    <label for="order-quantity">الكمية</label>
+                    <input type="number" id="order-quantity" value="1" min="1" max="10">
+                </div>
+                <button type="submit" class="submit-order">تأكيد الطلب وإرسال عبر واتساب</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/213658395924" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // بيانات المنتجات (سيتم حفظها في localStorage)
+        let products = JSON.parse(localStorage.getItem('styleQueenProducts')) || [];
+
+        // إنشاء النجوم
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // عرض المنتجات
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+            
+            products.forEach((product, index) => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image" onclick="deleteProduct(${index})">
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"> 
+                             <div class="placeholder" style="display:none;"><i class="fas fa-image"></i></div>` :
+                            `<div class="placeholder"><i class="fas fa-image"></i></div>`
+                        }
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">${product.price} د.ج</div>
+                        <p class="product-description">${product.description}</p>
+                        <button class="order-btn" data-id="${index}">اطلب الآن</button>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+            
+            // إضافة مستمعي الأحداث لأزرار الطلب
+            document.querySelectorAll('.order-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    const product = products[productId];
+                    document.getElementById('ordered-product').value = product.name;
+                    document.getElementById('ordered-price').value = product.price;
+                    document.getElementById('order-modal').classList.add('active');
+                });
+            });
+        }
+
+        // إضافة منتج جديد
+        document.getElementById('add-product').addEventListener('click', function() {
+            const name = document.getElementById('product-name').value;
+            const price = document.getElementById('product-price').value;
+            const description = document.getElementById('product-description').value;
+            const image = document.getElementById('product-image').value;
+            
+            if (!name || !price) {
+                alert('الرجاء إدخال اسم المنتج والسعر');
+                return;
+            }
+            
+            const newProduct = {
+                id: Date.now(),
+                name: name,
+                price: price,
+                description: description || 'لا يوجد وصف',
+                image: image || ''
+            };
+            
+            products.push(newProduct);
+            localStorage.setItem('styleQueenProducts', JSON.stringify(products));
+            renderProducts();
+            
+            // إعادة تعيين الحقول
+            document.getElementById('product-name').value = '';
+            document.getElementById('product-price').value = '';
+            document.getElementById('product-description').value = '';
+            document.getElementById('product-image').value = '';
+            
+            alert('تم إضافة المنتج بنجاح!');
+        });
+
+        // حذف منتج
+        function deleteProduct(index) {
+            if (confirm('هل تريد حذف هذا المنتج؟')) {
+                products.splice(index, 1);
+                localStorage.setItem('styleQueenProducts', JSON.stringify(products));
+                renderProducts();
+            }
+        }
+
+        // حذف جميع المنتجات
+        document.getElementById('clear-all').addEventListener('click', function() {
+            if (confirm('هل تريد حذف جميع المنتجات؟')) {
+                products = [];
+                localStorage.setItem('styleQueenProducts', JSON.stringify(products));
+                renderProducts();
+                alert('تم حذف جميع المنتجات');
+            }
+        });
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.products-section, .tracking-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                const target = this.getAttribute('data-target');
+                if (target === 'products') {
+                    document.getElementById('products').classList.add('active');
+                } else if (target === 'tracking') {
+                    document.getElementById('tracking').classList.add('active');
+                }
+            });
+        });
+
+        // Explore products button
+        document.getElementById('explore-products').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.querySelector('[data-target="products"]').classList.add('active');
+            
+            document.querySelectorAll('.products-section, .tracking-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('products').classList.add('active');
+        });
+
+        // Order form submission
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const product = document.getElementById('ordered-product').value;
+            const price = document.getElementById('ordered-price').value;
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('customer-phone').value;
+            const address = document.getElementById('customer-address').value;
+            const quantity = document.getElementById('order-quantity').value;
+            
+            const message = `طلب جديد من ستايل كوين\n\nالمنتج: ${product}\nالسعر: ${price} د.ج\nالكمية: ${quantity}\n\nالعميل:\nالاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}\n\nالرجاء تأكيد الطلب.`;
+            const encodedMessage = encodeURIComponent(message);
+            
+            window.open(`https://wa.me/213658395924?text=${encodedMessage}`, '_blank');
+            
+            document.getElementById('order-modal').classList.remove('active');
+            this.reset();
+        });
+
+        // Close modal
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('order-modal').classList.remove('active');
+        });
+
+        // Track order button
+        document.getElementById('track-order').addEventListener('click', function() {
+            const orderId = document.getElementById('order-id').value;
+            
+            if (orderId.trim() === '') {
+                alert('الرجاء إدخال رقم الطلب');
+                return;
+            }
+            
+            alert('سيتم تتبع الطلب قريباً!');
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            renderProducts();
+        });
+    </script>
+
+</body></html>
